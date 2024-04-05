@@ -1,0 +1,24 @@
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  };
+  @mixin fluid-text($max, $min){
+    font-size: clamp(#{$min}px, #{$max / 1920 * 100}vw, #{$max}px);
+  };
+  @mixin hover{
+    @media (hover: hover) {
+      &:hover{
+        @content
+      }  
+    };
+    @media (hover: none) {
+      &:active{
+        @content
+      }  
+    }
+  };
+  @mixin square($size){
+    width: $size;
+    aspect-ratio: 1;
+  }

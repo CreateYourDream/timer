@@ -1,0 +1,66 @@
+body {
+  background-color: var(--color-bg-block);
+}
+.timer {
+  @include flex-center;
+  padding-block: 60px;
+  &-wrapper {
+    width: 40%;
+    @include flex-center;
+    background-color: var(--color-bg-time);
+    border-radius: 20px;
+    flex-direction: column;
+    gap: 40px;
+    padding: 60px;
+  }
+  &-units {
+    font-size: 50px;
+  }
+  &-buttons-list {
+    display: flex;
+    column-gap: 20px;
+    &-button {
+      @include fluid-text(22, 16);
+      padding: 7px;
+      border-radius: var(--border-radius-button);
+      border: 2px solid var(--color-border-button);
+      transition-duration: var(--transition-duration);
+      @include hover {
+        background-color: var(--color-hover-button);
+      }
+    }
+  }
+  &-marks {
+    align-self: flex-start;
+    padding-left: 180px;
+  }
+  &__marks-list {
+    align-self: flex-start;
+    font-size: 20px;
+    overflow-y: hidden;
+    &-item {
+      &:not(:first-child) {
+        margin-top: 24px;
+      }
+      transform: translateY(-100%);
+      transition: 0.3s;
+      padding: 5px;
+      border-radius: 15px;
+      display: block;
+      max-width: 300px;
+      &::before {
+        display: inline-block;
+        content: "";
+        @include square(15px);
+        background: url(./blocks/img/icons8-открепить-50.png) center/contain
+          no-repeat;
+        margin-right: 16px;
+      }
+    }
+    &-item--active {
+      animation: anim-mark 1s ease;
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
